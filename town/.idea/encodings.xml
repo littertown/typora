@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://F:/git/hibernate-redis-devel" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate-examples" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate-redis" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate-redis-client" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate-redis-stresser" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate4" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate5" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-devel/hibernate52" charset="UTF-8" />
+    <file url="file://F:/git/hibernate-redis-master" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/study/TestRedis/JoinRedis.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/town/tool/XMLReader.java" charset="UTF-8" />
+    <file url="file://F:/worksapce/javademo" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

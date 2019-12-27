@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <!--加载属性文件-->
+    <context:property-placeholder location="classpath:/config.properties"/>
+    <!--开启事务注解-->
+    <tx:annotation-driven/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.jdbc.fetch_size">50</prop>
+                <prop key="hibernate.jdbc.batch_size">25</prop>
+                <prop key="current_session_context_class">thread</prop>
+                <!-- redis二级缓存 -->
+                <prop key="hibernate.cache.use_query_cache">true</prop><!-- 开启缓存 -->
+                <prop key="hibernate.cache.use_second_level_cache">true</prop><!-- 开启二级缓存 -->
+                <prop key="hibernate.cache.use_structured_entries">true</prop><!-- 结构化存储 -->
+                <prop key="hibernate.cache.region_prefix">hibernate</prop><!-- 二级缓存前缀名称-->
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.redis.hibernate52.SingletonRedisRegionFactory</prop>
+                <prop key="generate_statistics">true</prop>
+                <prop key="USE_STRUCTURED_CACHE">true</prop>
+                <prop key="cache.provider_configuration_file_resource_path">classpath:conf/hibernate-redis.properties</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="com.town.*.model"></property>
+    </bean>
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 配置 HibernateTemplate -->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+        <property name="checkWriteOperations" value="false"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--载入spring-shiro.xml 配置  -->
+    <!--<import resource="classpath:spring-shiro.xml"/>-->
+</beans>

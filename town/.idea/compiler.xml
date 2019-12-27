@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AjcSettings">
+    <option name="ajcPath" value="E:/Java_work/maven/apache-maven-3.6.0/maven-repository/org/aspectj/aspectjtools/1.6.11/aspectjtools-1.6.11.jar" />
+    <option name="delegateToJavac" value="true" />
+  </component>
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="ajc" />
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="town" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hibernate-examples" target="1.6" />
+      <module name="hibernate-redis" target="1.6" />
+      <module name="hibernate-redis (1) (net.daum.clix)" target="1.5" />
+      <module name="hibernate-redis (2) (net.daum.clix)" target="1.6" />
+      <module name="hibernate-redis-client" target="1.6" />
+      <module name="hibernate-redis-hibernate4" target="1.6" />
+      <module name="hibernate-redis-hibernate5" target="1.6" />
+      <module name="hibernate-redis-hibernate52" target="1.8" />
+      <module name="hibernate-redis-parent" target="1.6" />
+      <module name="hibernate-redis-stresser" target="1.6" />
+      <module name="javademo" target="1.5" />
+      <module name="lhjg" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
