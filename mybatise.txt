@@ -1,0 +1,11 @@
+插入：
+insert into 表名  values（？，？，？）
+
+更新
+update 表名 set 列名 = ？ where 列= ？
+
+删除
+delete from 表名 where 列名 = ？
+
+#{}
+
